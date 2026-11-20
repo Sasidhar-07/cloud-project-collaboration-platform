@@ -1,0 +1,118 @@
+{
+  "workspaces": [
+    {
+      "id": "ws-torstaq-core",
+      "name": "TorStaq Cloud Infra",
+      "description": "Production deployments, observability, and API gateways.",
+      "sprintName": "Sprint 14 · Cloud Hardening",
+      "members": [
+        {
+          "id": "m1",
+          "name": "Sasidhar",
+          "role": "Admin",
+          "capacityPoints": 24
+        },
+        {
+          "id": "m2",
+          "name": "Vijaysimha",
+          "role": "Maintainer",
+          "capacityPoints": 24
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t-101",
+          "title": "Set up Nginx reverse proxy & TLS on staging VPS",
+          "description": "Configure upstream routing, gzip compression, and SSL certificates.",
+          "status": "In Progress",
+          "priority": "High",
+          "points": 8,
+          "assignee": "Sasidhar",
+          "comments": [
+            {
+              "id": "c1",
+              "author": "Vijaysimha",
+              "text": "Staging DNS propagated.",
+              "createdAt": "2026-11-20T08:30:00Z"
+            }
+          ],
+          "updatedAt": "2026-11-20T09:15:00Z"
+        },
+        {
+          "id": "t-102",
+          "title": "Add structured request logging & health endpoint",
+          "description": "Expose /api/health with uptime and latency metrics.",
+          "status": "Done",
+          "priority": "Medium",
+          "points": 5,
+          "assignee": "Vijaysimha",
+          "comments": [],
+          "updatedAt": "2026-11-19T17:00:00Z"
+        },
+        {
+          "id": "t-103",
+          "title": "Design multi-tenant webhook retry queue",
+          "description": "Handle transient failures with exponential backoff.",
+          "status": "Todo",
+          "priority": "High",
+          "points": 8,
+          "assignee": "Sasidhar",
+          "comments": [],
+          "updatedAt": "2026-11-20T07:00:00Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "a1",
+          "text": "Vijaysimha moved \"Add structured request logging & health endpoint\" to Done",
+          "createdAt": "2026-11-19T17:00:00Z"
+        },
+        {
+          "id": "a2",
+          "text": "Sasidhar updated \"Set up Nginx reverse proxy & TLS on staging VPS\"",
+          "createdAt": "2026-11-20T09:15:00Z"
+        }
+      ]
+    },
+    {
+      "id": "ws-client-portal",
+      "name": "Client Delivery & QA",
+      "description": "Release readiness, UAT checklists, and sprint milestones.",
+      "sprintName": "Sprint 6 · v2 Release",
+      "members": [
+        {
+          "id": "m1",
+          "name": "Sasidhar",
+          "role": "Admin",
+          "capacityPoints": 20
+        },
+        {
+          "id": "m2",
+          "name": "Vijaysimha",
+          "role": "Maintainer",
+          "capacityPoints": 20
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t-201",
+          "title": "Verify mobile responsive layouts across Kanban & analytics",
+          "description": "Test tablet and mobile viewports for spacing and overflow.",
+          "status": "In Review",
+          "priority": "Medium",
+          "points": 5,
+          "assignee": "Vijaysimha",
+          "comments": [],
+          "updatedAt": "2026-11-20T10:00:00Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "a201",
+          "text": "Vijaysimha submitted \"Verify mobile responsive layouts across Kanban & analytics\" for review",
+          "createdAt": "2026-11-20T10:00:00Z"
+        }
+      ]
+    }
+  ]
+}
