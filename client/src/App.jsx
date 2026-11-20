@@ -128,37 +128,37 @@ export default function App() {
   const completionPct = totalTasks ? Math.round((doneTasks / totalTasks) * 100) : 0;
 
   return (
-    <div className="min-h-screen bg-[#070B14] text-cyan-50">
+    <div className="min-h-screen bg-[#070B14] text-cyan-50 text-sm">
       <header className="border-b border-cyan-950/80 bg-[#0B1220] sticky top-0 z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-md bg-cyan-500/10 border border-cyan-400/30 text-cyan-300">
-              <Layers className="w-5 h-5" />
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="p-2.5 rounded-lg bg-cyan-500/10 border border-cyan-400/30 text-cyan-300">
+              <Layers className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="text-base sm:text-lg font-bold tracking-tight text-white">SprintGrid Cloud PM</h1>
-              <p className="text-[11px] text-cyan-300/70">Workspace delivery · Story point telemetry · Live sync</p>
+              <h1 className="text-lg sm:text-xl font-bold tracking-tight text-white">SprintGrid Cloud PM</h1>
+              <p className="text-xs text-cyan-300/75 mt-0.5">Workspace delivery · Story point telemetry · Live sync</p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2.5">
             {workspaces.length > 0 && (
-              <select value={activeWsId} onChange={(e) => setActiveWsId(e.target.value)} className="px-3 py-1.5 rounded-md bg-[#070B14] border border-cyan-900 text-xs font-medium text-cyan-100">
+              <select value={activeWsId} onChange={(e) => setActiveWsId(e.target.value)} className="px-3.5 py-2 rounded-lg bg-[#070B14] border border-cyan-900 text-xs sm:text-sm font-medium text-cyan-100">
                 {workspaces.map((ws) => <option key={ws.id} value={ws.id}>{ws.name}</option>)}
               </select>
             )}
-            <select value={currentUser} onChange={(e) => setCurrentUser(e.target.value)} className="px-3 py-1.5 rounded-md bg-[#070B14] border border-cyan-900 text-xs font-medium text-amber-300">
+            <select value={currentUser} onChange={(e) => setCurrentUser(e.target.value)} className="px-3.5 py-2 rounded-lg bg-[#070B14] border border-cyan-900 text-xs sm:text-sm font-medium text-amber-300">
               {(activeWs?.members || [{ name: 'Sasidhar' }, { name: 'Vijaysimha' }]).map((m) => (
                 <option key={m.name} value={m.name}>User: {m.name}</option>
               ))}
             </select>
-            <button onClick={handleReset} className="px-2.5 py-1.5 rounded-md bg-[#070B14] hover:bg-cyan-950 border border-cyan-900 text-xs text-cyan-200 inline-flex items-center gap-1">
-              <RotateCcw className="w-3.5 h-3.5" /> Reset
+            <button onClick={handleReset} className="px-3 py-2 rounded-lg bg-[#070B14] hover:bg-cyan-950 border border-cyan-900 text-xs sm:text-sm text-cyan-200 inline-flex items-center gap-1.5">
+              <RotateCcw className="w-4 h-4" /> Reset
             </button>
-            <span className={`text-xs px-2.5 py-1.5 rounded-md border inline-flex items-center gap-1.5 ${backendConnected ? 'bg-teal-950/70 border-teal-600/50 text-teal-300' : 'bg-[#070B14] border-cyan-950 text-cyan-400/70'}`}>
-              <Server className="w-3.5 h-3.5" />{backendConnected ? 'API Live' : 'Local'}
+            <span className={`text-xs sm:text-sm px-3 py-2 rounded-lg border inline-flex items-center gap-1.5 font-medium ${backendConnected ? 'bg-teal-950/70 border-teal-600/50 text-teal-300' : 'bg-[#070B14] border-cyan-950 text-cyan-400/70'}`}>
+              <Server className="w-4 h-4" />{backendConnected ? 'API Live' : 'Local'}
             </span>
-            <button onClick={() => setShowNewModal(true)} className="px-3.5 py-1.5 rounded-md bg-cyan-500 hover:bg-cyan-400 text-xs font-bold text-slate-950 inline-flex items-center gap-1">
+            <button onClick={() => setShowNewModal(true)} className="px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-xs sm:text-sm font-bold text-slate-950 inline-flex items-center gap-1.5">
               <Plus className="w-4 h-4" /> Add Task
             </button>
           </div>
@@ -166,27 +166,26 @@ export default function App() {
       </header>
 
       {activeWs && (
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-5">
-          {/* Compact Telemetry Ribbon */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 bg-[#0B1220] border border-cyan-950/90 rounded-lg p-3.5">
+        <main className="max-w-7xl mx-auto px-5 sm:px-8 py-7 space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 bg-[#0B1220] border border-cyan-950/90 rounded-xl p-5">
             <div className="px-2">
-              <div className="text-[11px] uppercase tracking-wider text-cyan-400/70">Workspace</div>
-              <div className="text-sm font-bold text-white truncate mt-0.5">{activeWs.name}</div>
-              <div className="text-[11px] text-amber-300/90 truncate">{activeWs.sprintName}</div>
+              <div className="text-xs uppercase tracking-wider text-cyan-400/75 font-semibold">Workspace</div>
+              <div className="text-base font-bold text-white truncate mt-1">{activeWs.name}</div>
+              <div className="text-xs text-amber-300/90 truncate mt-0.5">{activeWs.sprintName}</div>
             </div>
-            <div className="px-2 border-l border-cyan-950">
-              <div className="text-[11px] uppercase tracking-wider text-cyan-400/70">Progress</div>
-              <div className="text-xl font-bold text-teal-300 mt-0.5">{completionPct}%</div>
-              <div className="text-[11px] text-cyan-200/60">{doneTasks}/{totalTasks} done</div>
+            <div className="px-3 sm:border-l border-cyan-950">
+              <div className="text-xs uppercase tracking-wider text-cyan-400/75 font-semibold">Progress</div>
+              <div className="text-2xl font-bold text-teal-300 mt-1">{completionPct}%</div>
+              <div className="text-xs text-cyan-200/65 mt-0.5">{doneTasks}/{totalTasks} done</div>
             </div>
-            <div className="px-2 border-l border-cyan-950">
-              <div className="text-[11px] uppercase tracking-wider text-cyan-400/70">Points Burned</div>
-              <div className="text-xl font-bold text-cyan-300 mt-0.5">{completedPoints}<span className="text-xs font-normal text-cyan-400/70"> / {totalPoints} pts</span></div>
-              <div className="text-[11px] text-cyan-200/60">{activeWs.members.length} active members</div>
+            <div className="px-3 lg:border-l border-cyan-950">
+              <div className="text-xs uppercase tracking-wider text-cyan-400/75 font-semibold">Points Burned</div>
+              <div className="text-2xl font-bold text-cyan-300 mt-1">{completedPoints}<span className="text-sm font-normal text-cyan-400/75"> / {totalPoints} pts</span></div>
+              <div className="text-xs text-cyan-200/65 mt-0.5">{activeWs.members.length} active members</div>
             </div>
-            <div className="px-2 border-l border-cyan-950 flex flex-col justify-center">
-              <div className="text-[11px] uppercase tracking-wider text-cyan-400/70 mb-1">Views</div>
-              <div className="flex flex-wrap gap-1.5">
+            <div className="px-3 lg:border-l border-cyan-950 flex flex-col justify-center">
+              <div className="text-xs uppercase tracking-wider text-cyan-400/75 font-semibold mb-2">Views</div>
+              <div className="flex flex-wrap gap-2">
                 {[
                   { id: 'board', label: 'Board', icon: KanbanSquare },
                   { id: 'analytics', label: 'Metrics', icon: BarChart3 },
@@ -195,8 +194,8 @@ export default function App() {
                 ].map((t) => {
                   const Icon = t.icon;
                   return (
-                    <button key={t.id} onClick={() => setActiveTab(t.id)} className={`inline-flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium ${activeTab === t.id ? 'bg-cyan-500 text-slate-950 font-semibold' : 'bg-[#070B14] text-cyan-200/80 hover:text-white border border-cyan-950'}`}>
-                      <Icon className="w-3 h-3" />{t.label}
+                    <button key={t.id} onClick={() => setActiveTab(t.id)} className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium ${activeTab === t.id ? 'bg-cyan-500 text-slate-950 font-semibold' : 'bg-[#070B14] text-cyan-200/85 hover:text-white border border-cyan-950'}`}>
+                      <Icon className="w-3.5 h-3.5" />{t.label}
                     </button>
                   );
                 })}
@@ -206,12 +205,12 @@ export default function App() {
 
           {activeTab === 'board' && (
             <>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3.5">
                 <div className="relative flex-1">
-                  <Search className="w-4 h-4 text-cyan-400/70 absolute left-3.5 top-2.5" />
-                  <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Filter by task title or member..." className="w-full pl-10 pr-4 py-2 rounded-md bg-[#0B1220] border border-cyan-950 text-xs sm:text-sm text-white" />
+                  <Search className="w-4 h-4 text-cyan-400/75 absolute left-3.5 top-3" />
+                  <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Filter by task title or member..." className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-[#0B1220] border border-cyan-950 text-sm text-white" />
                 </div>
-                <select value={priorityFilter} onChange={(e) => setPriorityFilter(e.target.value)} className="px-3 py-2 rounded-md bg-[#0B1220] border border-cyan-950 text-xs sm:text-sm text-cyan-100">
+                <select value={priorityFilter} onChange={(e) => setPriorityFilter(e.target.value)} className="px-3.5 py-2.5 rounded-lg bg-[#0B1220] border border-cyan-950 text-sm text-cyan-100">
                   <option value="All">All Priorities</option>
                   {PRIORITIES.map((p) => <option key={p} value={p}>{p}</option>)}
                 </select>
@@ -221,27 +220,27 @@ export default function App() {
                 {COLUMNS.map((col) => {
                   const colTasks = filteredTasks.filter((t) => t.status === col);
                   return (
-                    <div key={col} className={`bg-[#0B1220] border border-cyan-950/90 border-t-2 ${COLUMN_ACCENT[col]} rounded-lg p-3 space-y-3 min-h-[340px]`}>
+                    <div key={col} className={`bg-[#0B1220] border border-cyan-950/90 border-t-2 ${COLUMN_ACCENT[col]} rounded-xl p-4 space-y-3.5 min-h-[360px]`}>
                       <div className="flex items-center justify-between px-1">
                         <h3 className="text-xs font-bold uppercase tracking-wider text-cyan-200">{col}</h3>
-                        <span className="text-xs px-2 py-0.5 rounded bg-[#070B14] border border-cyan-950 text-cyan-300 font-mono">{colTasks.length}</span>
+                        <span className="text-xs px-2.5 py-0.5 rounded bg-[#070B14] border border-cyan-950 text-cyan-300 font-mono">{colTasks.length}</span>
                       </div>
-                      <div className="space-y-2.5">
+                      <div className="space-y-3">
                         {colTasks.map((task) => {
                           const nextCol = COLUMNS[(COLUMNS.indexOf(task.status) + 1) % COLUMNS.length];
                           return (
-                            <div key={task.id} className="bg-[#070B14] border border-cyan-950 hover:border-cyan-500/50 rounded-md p-3 space-y-2 transition">
+                            <div key={task.id} className="bg-[#070B14] border border-cyan-950 hover:border-cyan-500/50 rounded-lg p-3.5 space-y-2.5 transition">
                               <div className="flex items-center justify-between gap-2">
-                                <span className={`text-[10px] px-2 py-0.5 rounded border font-semibold ${PRIORITY_PILL[task.priority] || PRIORITY_PILL.Medium}`}>{task.priority}</span>
-                                <span className="text-[11px] font-mono text-amber-300">{task.points} pts</span>
+                                <span className={`text-xs px-2.5 py-0.5 rounded border font-semibold ${PRIORITY_PILL[task.priority] || PRIORITY_PILL.Medium}`}>{task.priority}</span>
+                                <span className="text-xs font-mono text-amber-300">{task.points} pts</span>
                               </div>
-                              <button onClick={() => setSelectedTaskId(task.id)} className="text-left text-sm font-semibold text-white hover:text-cyan-300 block w-full">{task.title}</button>
-                              {task.description && <p className="text-xs text-cyan-100/60 line-clamp-2">{task.description}</p>}
-                              <div className="pt-2 border-t border-cyan-950/80 flex items-center justify-between text-xs">
+                              <button onClick={() => setSelectedTaskId(task.id)} className="text-left text-sm font-semibold text-white hover:text-cyan-300 block w-full leading-snug">{task.title}</button>
+                              {task.description && <p className="text-xs text-cyan-100/65 line-clamp-2 leading-relaxed">{task.description}</p>}
+                              <div className="pt-2.5 border-t border-cyan-950/80 flex items-center justify-between text-xs">
                                 <span className="text-cyan-200 font-medium">{task.assignee}</span>
                                 <div className="flex items-center gap-2">
-                                  <button onClick={() => setSelectedTaskId(task.id)} className="text-cyan-300/70 hover:text-white inline-flex items-center gap-1"><MessageSquare className="w-3.5 h-3.5" /><span>{task.comments?.length || 0}</span></button>
-                                  <button onClick={() => handleStatusChange(task.id, nextCol)} className="px-2 py-0.5 rounded bg-cyan-950/90 hover:bg-cyan-500 text-[11px] text-cyan-200 hover:text-slate-950 font-medium inline-flex items-center gap-1"><span>{nextCol}</span><ArrowRight className="w-3 h-3" /></button>
+                                  <button onClick={() => setSelectedTaskId(task.id)} className="text-cyan-300/75 hover:text-white inline-flex items-center gap-1"><MessageSquare className="w-3.5 h-3.5" /><span>{task.comments?.length || 0}</span></button>
+                                  <button onClick={() => handleStatusChange(task.id, nextCol)} className="px-2.5 py-1 rounded bg-cyan-950/90 hover:bg-cyan-500 text-xs text-cyan-200 hover:text-slate-950 font-medium inline-flex items-center gap-1"><span>{nextCol}</span><ArrowRight className="w-3 h-3" /></button>
                                 </div>
                               </div>
                             </div>
@@ -257,36 +256,36 @@ export default function App() {
 
           {activeTab === 'analytics' && (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="bg-[#0B1220] border border-cyan-950 rounded-lg p-4"><div className="text-xs text-cyan-300/70">Completion Rate</div><div className="text-3xl font-bold text-teal-300 mt-1">{completionPct}%</div><div className="text-xs text-cyan-100/50 mt-1">{doneTasks} of {totalTasks} tasks done</div></div>
-              <div className="bg-[#0B1220] border border-cyan-950 rounded-lg p-4"><div className="text-xs text-cyan-300/70">Sprint Points Done</div><div className="text-3xl font-bold text-cyan-300 mt-1">{completedPoints} / {totalPoints}</div><div className="text-xs text-cyan-100/50 mt-1">Story points delivered</div></div>
-              <div className="bg-[#0B1220] border border-cyan-950 rounded-lg p-4"><div className="text-xs text-cyan-300/70">Team Size</div><div className="text-3xl font-bold text-white mt-1">{activeWs.members.length}</div><div className="text-xs text-cyan-100/50 mt-1">Active workspace members</div></div>
-              <div className="bg-[#0B1220] border border-cyan-950 rounded-lg p-4"><div className="text-xs text-cyan-300/70">Activity Events</div><div className="text-3xl font-bold text-amber-300 mt-1">{activeWs.activities.length}</div><div className="text-xs text-cyan-100/50 mt-1">Recorded updates</div></div>
+              <div className="bg-[#0B1220] border border-cyan-950 rounded-xl p-5"><div className="text-xs text-cyan-300/75 font-medium">Completion Rate</div><div className="text-3xl font-bold text-teal-300 mt-1.5">{completionPct}%</div><div className="text-xs text-cyan-100/55 mt-1">{doneTasks} of {totalTasks} tasks done</div></div>
+              <div className="bg-[#0B1220] border border-cyan-950 rounded-xl p-5"><div className="text-xs text-cyan-300/75 font-medium">Sprint Points Done</div><div className="text-3xl font-bold text-cyan-300 mt-1.5">{completedPoints} / {totalPoints}</div><div className="text-xs text-cyan-100/55 mt-1">Story points delivered</div></div>
+              <div className="bg-[#0B1220] border border-cyan-950 rounded-xl p-5"><div className="text-xs text-cyan-300/75 font-medium">Team Size</div><div className="text-3xl font-bold text-white mt-1.5">{activeWs.members.length}</div><div className="text-xs text-cyan-100/55 mt-1">Active workspace members</div></div>
+              <div className="bg-[#0B1220] border border-cyan-950 rounded-xl p-5"><div className="text-xs text-cyan-300/75 font-medium">Activity Events</div><div className="text-3xl font-bold text-amber-300 mt-1.5">{activeWs.activities.length}</div><div className="text-xs text-cyan-100/55 mt-1">Recorded updates</div></div>
             </div>
           )}
 
           {activeTab === 'team' && (
-            <div className="bg-[#0B1220] border border-cyan-950 rounded-lg p-5 space-y-4">
+            <div className="bg-[#0B1220] border border-cyan-950 rounded-xl p-6 space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <h3 className="text-sm font-bold text-white">Team Members & Roles</h3>
-                <form onSubmit={handleAddMember} className="flex flex-wrap gap-2">
-                  <input type="text" value={newMemberName} onChange={(e) => setNewMemberName(e.target.value)} placeholder="Member name..." className="px-3 py-1.5 rounded-md bg-[#070B14] border border-cyan-900 text-xs text-white" />
-                  <select value={newMemberRole} onChange={(e) => setNewMemberRole(e.target.value)} className="px-2.5 py-1.5 rounded-md bg-[#070B14] border border-cyan-900 text-xs text-cyan-100">
+                <h3 className="text-base font-bold text-white">Team Members & Roles</h3>
+                <form onSubmit={handleAddMember} className="flex flex-wrap gap-2.5">
+                  <input type="text" value={newMemberName} onChange={(e) => setNewMemberName(e.target.value)} placeholder="Member name..." className="px-3.5 py-2 rounded-lg bg-[#070B14] border border-cyan-900 text-xs sm:text-sm text-white" />
+                  <select value={newMemberRole} onChange={(e) => setNewMemberRole(e.target.value)} className="px-3 py-2 rounded-lg bg-[#070B14] border border-cyan-900 text-xs sm:text-sm text-cyan-100">
                     {ROLES.map((r) => <option key={r} value={r}>{r}</option>)}
                   </select>
-                  <button type="submit" className="px-3 py-1.5 rounded-md bg-cyan-500 hover:bg-cyan-400 text-xs font-bold text-slate-950 inline-flex items-center gap-1">
-                    <UserPlus className="w-3.5 h-3.5" /> Add
+                  <button type="submit" className="px-3.5 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-xs sm:text-sm font-bold text-slate-950 inline-flex items-center gap-1.5">
+                    <UserPlus className="w-4 h-4" /> Add
                   </button>
                 </form>
               </div>
               {activeWs.members.map((m) => {
                 const memberPts = activeWs.tasks.filter((t) => t.assignee === m.name).reduce((s, t) => s + (t.points || 0), 0);
                 return (
-                  <div key={m.id} className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-md bg-[#070B14] border border-cyan-950">
+                  <div key={m.id} className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-lg bg-[#070B14] border border-cyan-950">
                     <div>
-                      <div className="text-sm font-semibold text-white">{m.name}</div>
-                      <div className="text-xs text-cyan-300/70">Allocated: {memberPts} / {m.capacityPoints} sprint pts</div>
+                      <div className="text-base font-semibold text-white">{m.name}</div>
+                      <div className="text-xs sm:text-sm text-cyan-300/75 mt-0.5">Allocated: {memberPts} / {m.capacityPoints} sprint pts</div>
                     </div>
-                    <select value={m.role} onChange={(e) => handleRoleChange(m.id, e.target.value)} className="px-3 py-1.5 rounded-md bg-[#0B1220] border border-cyan-900 text-xs text-cyan-100">
+                    <select value={m.role} onChange={(e) => handleRoleChange(m.id, e.target.value)} className="px-3.5 py-2 rounded-lg bg-[#0B1220] border border-cyan-900 text-xs sm:text-sm text-cyan-100">
                       {ROLES.map((r) => <option key={r} value={r}>{r}</option>)}
                     </select>
                   </div>
@@ -296,12 +295,12 @@ export default function App() {
           )}
 
           {activeTab === 'activity' && (
-            <div className="bg-[#0B1220] border border-cyan-950 rounded-lg p-5 space-y-2.5">
-              <h3 className="text-sm font-bold text-white mb-2">Activity Feed</h3>
+            <div className="bg-[#0B1220] border border-cyan-950 rounded-xl p-6 space-y-3">
+              <h3 className="text-base font-bold text-white mb-2">Activity Feed</h3>
               {activeWs.activities.map((act) => (
-                <div key={act.id} className="p-3 rounded-md bg-[#070B14] border border-cyan-950 text-xs flex items-center justify-between gap-3">
+                <div key={act.id} className="p-3.5 rounded-lg bg-[#070B14] border border-cyan-950 text-xs sm:text-sm flex items-center justify-between gap-3">
                   <span className="text-cyan-50 flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />{act.text}</span>
-                  <span className="text-cyan-300/60 shrink-0">{new Date(act.createdAt).toLocaleString()}</span>
+                  <span className="text-xs text-cyan-300/65 shrink-0">{new Date(act.createdAt).toLocaleString()}</span>
                 </div>
               ))}
             </div>
@@ -311,22 +310,22 @@ export default function App() {
 
       {showNewModal && (
         <div className="fixed inset-0 bg-black/75 flex items-center justify-center p-4 z-30">
-          <form onSubmit={handleCreateTask} className="bg-[#0B1220] border border-cyan-900 rounded-lg p-5 w-full max-w-md space-y-3.5">
+          <form onSubmit={handleCreateTask} className="bg-[#0B1220] border border-cyan-900 rounded-xl p-6 w-full max-w-md space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="text-base font-bold text-white">New Task</h3>
-              <button type="button" onClick={() => setShowNewModal(false)} className="text-cyan-300/70 hover:text-white"><X className="w-5 h-5" /></button>
+              <button type="button" onClick={() => setShowNewModal(false)} className="text-cyan-300/75 hover:text-white"><X className="w-5 h-5" /></button>
             </div>
-            <input type="text" required value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="Task title..." className="w-full px-3 py-2 rounded-md bg-[#070B14] border border-cyan-900 text-sm text-white" />
-            <textarea rows={3} value={newDesc} onChange={(e) => setNewDesc(e.target.value)} placeholder="Details..." className="w-full px-3 py-2 rounded-md bg-[#070B14] border border-cyan-900 text-sm text-white" />
-            <div className="grid grid-cols-2 gap-3 text-xs">
-              <div><label className="text-cyan-300/70 block mb-1">Status</label><select value={newStatus} onChange={(e) => setNewStatus(e.target.value)} className="w-full px-2.5 py-2 rounded-md bg-[#070B14] border border-cyan-900 text-white">{COLUMNS.map((c) => <option key={c} value={c}>{c}</option>)}</select></div>
-              <div><label className="text-cyan-300/70 block mb-1">Priority</label><select value={newPriority} onChange={(e) => setNewPriority(e.target.value)} className="w-full px-2.5 py-2 rounded-md bg-[#070B14] border border-cyan-900 text-white">{PRIORITIES.map((p) => <option key={p} value={p}>{p}</option>)}</select></div>
-              <div><label className="text-cyan-300/70 block mb-1">Assignee</label><select value={newAssignee} onChange={(e) => setNewAssignee(e.target.value)} className="w-full px-2.5 py-2 rounded-md bg-[#070B14] border border-cyan-900 text-white">{(activeWs?.members || []).map((m) => <option key={m.id} value={m.name}>{m.name}</option>)}</select></div>
-              <div><label className="text-cyan-300/70 block mb-1">Points</label><input type="number" min={1} max={21} value={newPoints} onChange={(e) => setNewPoints(e.target.value)} className="w-full px-2.5 py-2 rounded-md bg-[#070B14] border border-cyan-900 text-white" /></div>
+            <input type="text" required value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="Task title..." className="w-full px-3.5 py-2.5 rounded-lg bg-[#070B14] border border-cyan-900 text-sm text-white" />
+            <textarea rows={3} value={newDesc} onChange={(e) => setNewDesc(e.target.value)} placeholder="Details..." className="w-full px-3.5 py-2.5 rounded-lg bg-[#070B14] border border-cyan-900 text-sm text-white" />
+            <div className="grid grid-cols-2 gap-3 text-xs sm:text-sm">
+              <div><label className="text-cyan-300/75 block mb-1">Status</label><select value={newStatus} onChange={(e) => setNewStatus(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-[#070B14] border border-cyan-900 text-white">{COLUMNS.map((c) => <option key={c} value={c}>{c}</option>)}</select></div>
+              <div><label className="text-cyan-300/75 block mb-1">Priority</label><select value={newPriority} onChange={(e) => setNewPriority(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-[#070B14] border border-cyan-900 text-white">{PRIORITIES.map((p) => <option key={p} value={p}>{p}</option>)}</select></div>
+              <div><label className="text-cyan-300/75 block mb-1">Assignee</label><select value={newAssignee} onChange={(e) => setNewAssignee(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-[#070B14] border border-cyan-900 text-white">{(activeWs?.members || []).map((m) => <option key={m.id} value={m.name}>{m.name}</option>)}</select></div>
+              <div><label className="text-cyan-300/75 block mb-1">Points</label><input type="number" min={1} max={21} value={newPoints} onChange={(e) => setNewPoints(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-[#070B14] border border-cyan-900 text-white" /></div>
             </div>
-            <div className="flex justify-end gap-2 pt-2">
-              <button type="button" onClick={() => setShowNewModal(false)} className="px-4 py-2 rounded-md bg-[#070B14] border border-cyan-950 text-xs text-cyan-200">Cancel</button>
-              <button type="submit" className="px-4 py-2 rounded-md bg-cyan-500 text-xs font-bold text-slate-950">Create</button>
+            <div className="flex justify-end gap-2.5 pt-2">
+              <button type="button" onClick={() => setShowNewModal(false)} className="px-4 py-2 rounded-lg bg-[#070B14] border border-cyan-950 text-xs sm:text-sm text-cyan-200">Cancel</button>
+              <button type="submit" className="px-4 py-2 rounded-lg bg-cyan-500 text-xs sm:text-sm font-bold text-slate-950">Create</button>
             </div>
           </form>
         </div>
@@ -334,32 +333,32 @@ export default function App() {
 
       {selectedTask && (
         <div className="fixed inset-0 bg-black/75 flex justify-end z-30">
-          <div className="bg-[#0B1220] border-l border-cyan-950 w-full max-w-lg p-5 overflow-y-auto space-y-4">
+          <div className="bg-[#0B1220] border-l border-cyan-950 w-full max-w-lg p-6 overflow-y-auto space-y-4">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <span className="text-xs font-mono text-amber-300">{selectedTask.status} · {selectedTask.points} pts</span>
                 <h3 className="text-lg font-bold text-white mt-0.5">{selectedTask.title}</h3>
               </div>
-              <button onClick={() => setSelectedTaskId(null)} className="text-cyan-300/70 hover:text-white"><X className="w-5 h-5" /></button>
+              <button onClick={() => setSelectedTaskId(null)} className="text-cyan-300/75 hover:text-white"><X className="w-5 h-5" /></button>
             </div>
-            <p className="text-sm text-cyan-50/90 bg-[#070B14] p-3.5 rounded-md border border-cyan-950">{selectedTask.description || 'No description provided.'}</p>
-            <div className="flex items-center justify-between text-xs text-cyan-300/70">
+            <p className="text-sm text-cyan-50/90 bg-[#070B14] p-4 rounded-lg border border-cyan-950 leading-relaxed">{selectedTask.description || 'No description provided.'}</p>
+            <div className="flex items-center justify-between text-xs sm:text-sm text-cyan-300/75">
               <span>Assignee: <strong className="text-white">{selectedTask.assignee}</strong></span>
-              <button onClick={() => handleDeleteTask(selectedTask.id)} className="text-rose-400 hover:text-rose-300 inline-flex items-center gap-1"><Trash2 className="w-3.5 h-3.5" /> Delete</button>
+              <button onClick={() => handleDeleteTask(selectedTask.id)} className="text-rose-400 hover:text-rose-300 inline-flex items-center gap-1"><Trash2 className="w-4 h-4" /> Delete</button>
             </div>
             <div className="border-t border-cyan-950 pt-4 space-y-3">
-              <h4 className="text-xs font-bold uppercase text-cyan-300/70">Comments ({selectedTask.comments?.length || 0})</h4>
-              <div className="space-y-2 max-h-60 overflow-y-auto">
+              <h4 className="text-xs font-bold uppercase text-cyan-300/75">Comments ({selectedTask.comments?.length || 0})</h4>
+              <div className="space-y-2.5 max-h-60 overflow-y-auto">
                 {(selectedTask.comments || []).map((c) => (
-                  <div key={c.id} className="p-3 rounded-md bg-[#070B14] border border-cyan-950 text-xs space-y-1">
-                    <div className="flex justify-between text-cyan-300/70"><strong className="text-cyan-300">{c.author}</strong><span>{new Date(c.createdAt).toLocaleTimeString()}</span></div>
+                  <div key={c.id} className="p-3.5 rounded-lg bg-[#070B14] border border-cyan-950 text-xs sm:text-sm space-y-1">
+                    <div className="flex justify-between text-xs text-cyan-300/75"><strong className="text-cyan-300">{c.author}</strong><span>{new Date(c.createdAt).toLocaleTimeString()}</span></div>
                     <p className="text-cyan-50">{c.text}</p>
                   </div>
                 ))}
               </div>
               <form onSubmit={handleAddComment} className="flex gap-2">
-                <input type="text" value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder={`Comment as ${currentUser}...`} className="flex-1 px-3 py-2 rounded-md bg-[#070B14] border border-cyan-900 text-xs text-white" />
-                <button type="submit" className="px-3.5 py-2 rounded-md bg-cyan-500 text-xs font-bold text-slate-950">Post</button>
+                <input type="text" value={commentText} onChange={(e) => setCommentText(e.target.value)} placeholder={`Comment as ${currentUser}...`} className="flex-1 px-3.5 py-2 rounded-lg bg-[#070B14] border border-cyan-900 text-xs sm:text-sm text-white" />
+                <button type="submit" className="px-4 py-2 rounded-lg bg-cyan-500 text-xs sm:text-sm font-bold text-slate-950">Post</button>
               </form>
             </div>
           </div>
